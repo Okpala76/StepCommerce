@@ -1,4 +1,9 @@
-// Placeholder barrel for the categories feature.
-// Export category-specific components, queries, actions, and schemas from here when implementation begins.
-
-export {};
+export { createCategoryAction, deleteCategoryAction, updateCategoryAction } from "./actions";
+export { CategoryForm } from "./components/category-form";
+export { CategoryTable } from "./components/category-table";
+export { getCategories } from "./queries";
+export {
+  categorySchema,
+  initialCategoryActionState,
+  updateCategorySchema,
+} from "./schema";
