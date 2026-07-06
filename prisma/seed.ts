@@ -6,7 +6,7 @@ import {
   InventoryReason,
   PrismaClient,
   ProductStatus,
-} from "../src/generated/prisma/client";
+} from "../generated/prisma/client";
 
 const connectionString = process.env.DATABASE_URL;
 

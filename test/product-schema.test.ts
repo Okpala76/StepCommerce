@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { productSchema } from "../../features/products/validation/product-schema";
+import { productSchema } from "@/features/products/validations/product_schema";
 
 describe("productSchema", () => {
   it("accepts a valid product payload", () => {
