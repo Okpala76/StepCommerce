@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,10 +27,7 @@ type ProductFiltersProps = {
   filters: ProductFilters;
 };
 
-export function ProductFilters({
-  categories,
-  filters,
-}: ProductFiltersProps) {
+export function ProductFilters({ categories, filters }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
@@ -112,7 +109,11 @@ export function ProductFilters({
           }
         >
           <SelectTrigger id="product-category-filter" className="w-full">
-            <SelectValue placeholder="All categories" />
+            <SelectValue placeholder="All categories">
+              {categoryId
+                ? categories.find((cat) => cat.id === categoryId)?.name
+                : "All categories"}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="__all">All categories</SelectItem>
