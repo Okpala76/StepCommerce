@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -40,6 +42,12 @@ export default async function EditProductPage({
     <main className="min-h-full bg-zinc-50">
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
         <section className="space-y-2">
+          <Link
+            href="/products"
+            className={buttonVariants({ variant: "outline", size: "sm" })}
+          >
+            ← Back
+          </Link>
           <Badge variant="outline">Edit product</Badge>
           <div className="space-y-1">
             <h1 className="text-3xl font-semibold tracking-tight text-foreground">
