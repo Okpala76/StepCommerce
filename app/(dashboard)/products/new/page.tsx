@@ -10,6 +10,8 @@ import { createProduct } from "@/features/products/actions";
 import { ProductForm } from "@/features/products/components/product-form";
 import { getCategoriesForProductForm } from "@/features/products/queries";
 
+export const dynamic = "force-dynamic";
+
 export default async function NewProductPage() {
   const categories = await getCategoriesForProductForm();
 

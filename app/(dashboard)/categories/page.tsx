@@ -15,6 +15,8 @@ import { CategoryForm } from "@/features/categories/components/category-form";
 import { CategoryTable } from "@/features/categories/components/category-table";
 import { getCategories } from "@/features/categories/queries";
 
+export const dynamic = "force-dynamic";
+
 export default async function CategoriesPage() {
   const categories = await getCategories();
   const totalProducts = categories.reduce(
