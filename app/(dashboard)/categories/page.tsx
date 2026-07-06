@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -14,6 +17,7 @@ import {
 import { CategoryForm } from "@/features/categories/components/category-form";
 import { CategoryTable } from "@/features/categories/components/category-table";
 import { getCategories } from "@/features/categories/queries";
+import { cn } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +33,12 @@ export default async function CategoriesPage() {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
         <section className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="space-y-2">
+            <Link
+              href="/"
+              className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
+            >
+              ← Back
+            </Link>
             <Badge variant="outline">Catalog management</Badge>
             <div className="space-y-1">
               <h1 className="text-3xl font-semibold tracking-tight text-foreground">
