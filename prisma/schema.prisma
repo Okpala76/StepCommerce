@@ -1,2 +1,82 @@
-// Placeholder Prisma schema for the CommerceOps admin dashboard.
-// Add the PostgreSQL datasource, generator, and models here when the data layer is implemented.
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+enum InventoryMovementType {
+  INCREASE
+  DECREASE
+}
+
+enum InventoryReason {
+  RESTOCK
+  SALE
+  DAMAGE
+  RETURN
+  CORRECTION
+}
+
+model User {
+  id                 String              @id @default(cuid())
+  email              String              @unique
+  name               String?
+  passwordHash       String
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  inventoryMovements InventoryMovement[]
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Product {
+  id                 String              @id @default(cuid())
+  name               String
+  slug               String              @unique
+  description        String?
+  sku                String              @unique
+  price              Decimal             @db.Decimal(10, 2)
+  status             ProductStatus       @default(DRAFT)
+  categoryId         String
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  category           Category            @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  inventoryMovements InventoryMovement[]
+
+  @@index([categoryId])
+  @@index([status])
+}
+
+model InventoryMovement {
+  id        String                @id @default(cuid())
+  productId String
+  userId    String?
+  type      InventoryMovementType
+  reason    InventoryReason
+  quantity  Int
+  note      String?
+  createdAt DateTime              @default(now())
+  product   Product               @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User?                 @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([productId])
+  @@index([userId])
+  @@index([createdAt])
+}
