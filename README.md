@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# StepCommerce
 
-## Getting Started
+StepCommerce is a Next.js admin dashboard for managing an e-commerce catalog. It is designed as a product-focused assessment project that demonstrates modern frontend architecture, server-rendered pages, reusable UI, validated forms, and a clean feature-based structure.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Product management with create, edit, archive, and delete flows
+- Category management for organizing the catalog
+- Search and filtering for products by name, SKU, status, and category
+- Dashboard-style landing page for quick navigation
+- Prisma-backed data model with seed data
+- Type-safe validation with Zod
+- Reusable UI components built with shadcn-style patterns
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js App Router
+- TypeScript
+- Prisma
+- PostgreSQL
+- Tailwind CSS
+- Vitest
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Prerequisites
 
-## Learn More
+- Node.js 20+
+- npm
+- A PostgreSQL database URL
 
-To learn more about Next.js, take a look at the following resources:
+## Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   git clone <your-repo-url>
+   cd StepCommerce
+   ```
 
-## Deploy on Vercel
+2. Install dependencies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Configure environment variables
+   Create a `.env` file in the project root and add your database connection string:
+
+   ```env
+   DATABASE_URL=postgresql://<user>:<password>@<host>:<port>/<database>
+   ```
+
+4. Generate Prisma client
+
+   ```bash
+   npx prisma generate
+   ```
+
+5. Run database migrations and seed data
+
+   ```bash
+   npx prisma db push
+   npm run db:seed
+   ```
+
+6. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+Open http://localhost:3000 to view the app.
+
+## Available scripts
+
+- `npm run dev` - start the local development server
+- `npm run build` - create a production build
+- `npm run lint` - run ESLint
+- `npm run test:run` - run the Vitest test suite
+- `npm run db:seed` - seed the database with sample catalog data
+
+## Project structure
+
+- `app/` - route pages and layout
+- `features/` - feature-specific business logic, components, queries, and actions
+- `components/ui/` - shared UI primitives
+- `prisma/` - Prisma schema and seed script
+- `test/` - Vitest tests
+
+## Notes
+
+This project is intentionally structured to be easy to explain in an assessment or interview context: the app is feature-driven, the UI is modular, and the data layer is separated from the presentation layer.
