@@ -521,14 +521,6 @@ export type EnumInventoryReasonFieldUpdateOperationsInput = {
   set?: $Enums.InventoryReason
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type InventoryMovementCreateWithoutUserInput = {
   id?: string
   type: $Enums.InventoryMovementType

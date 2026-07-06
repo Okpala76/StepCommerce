@@ -774,6 +774,8 @@ export const ProductScalarFieldEnum = {
   sku: 'sku',
   price: 'price',
   status: 'status',
+  stockQuantity: 'stockQuantity',
+  lowStockThreshold: 'lowStockThreshold',
   categoryId: 'categoryId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -883,6 +885,20 @@ export type ListEnumProductStatusFieldRefInput<$PrismaModel> = FieldRefInputType
 
 
 /**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
  * Reference to a field of type 'InventoryMovementType'
  */
 export type EnumInventoryMovementTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InventoryMovementType'>
@@ -907,20 +923,6 @@ export type EnumInventoryReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$
  * Reference to a field of type 'InventoryReason[]'
  */
 export type ListEnumInventoryReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InventoryReason[]'>
-    
-
-
-/**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 

@@ -1,4 +1,25 @@
-// Placeholder for the shared Prisma client setup.
-// Add the singleton database client here once Prisma is wired into the project.
+import { PrismaPg } from "@prisma/adapter-pg";
 
-export {};
+import { PrismaClient } from "../src/generated/prisma/client";
+
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error("DATABASE_URL is required to initialize Prisma.");
+}
+
+const globalForPrisma = globalThis as typeof globalThis & {
+  prisma?: PrismaClient;
+};
+
+const adapter = new PrismaPg({ connectionString });
+
+export const db =
+  globalForPrisma.prisma ??
+  new PrismaClient({
+    adapter,
+  });
+
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = db;
+}
