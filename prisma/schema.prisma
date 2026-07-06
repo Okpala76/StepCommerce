@@ -1,0 +1,2 @@
+// Placeholder Prisma schema for the CommerceOps admin dashboard.
+// Add the PostgreSQL datasource, generator, and models here when the data layer is implemented.
