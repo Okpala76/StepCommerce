@@ -54,6 +54,8 @@ model Product {
   sku                String              @unique
   price              Decimal             @db.Decimal(10, 2)
   status             ProductStatus       @default(DRAFT)
+  stockQuantity      Int                 @default(0)
+  lowStockThreshold  Int                 @default(5)
   categoryId         String
   createdAt          DateTime            @default(now())
   updatedAt          DateTime            @updatedAt
